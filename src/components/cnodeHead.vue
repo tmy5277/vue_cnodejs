@@ -16,6 +16,8 @@
         </span>
         <a href="https://github.com/tmy5277/vue_cnodejs" target="_blank">GitHub</a>
         <br>
+        <span><strong>API：</strong></span>
+        <a href="https://cnodejs.org/api">CNode：Node.js专业中文社区-API文档</a>
         <br>
         <br>
         <span><strong>技术栈：</strong></span>
@@ -25,9 +27,6 @@
           <li>Axios</li>
           <li>Element-UI</li>
         </ul>
-        <br>
-        <span><strong>API：</strong></span>
-        <a href="https://cnodejs.org/api">CNode：Node.js专业中文社区</a>
       </div>
     </el-dialog>
   </div>

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <cnodeHead></cnodeHead>
-<!--     <router-view name='main'></router-view>
-    <router-view name='side' ref='loginname'></router-view> -->
+    <router-view name='main'></router-view>
+    <router-view name='side' ref='loginname'></router-view>
   </div>
 </template>
 
@@ -17,7 +17,12 @@ export default {
     }
   },
   components:{
-    cnodeHead,
+    cnodeHead
+  },
+  watch:{
+      authorName(val){
+        this.$refs.child.name = val ;
+      }
   },
 }
 </script>
