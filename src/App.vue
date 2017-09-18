@@ -19,11 +19,7 @@ export default {
   components:{
     cnodeHead
   },
-  watch:{
-      authorName(val){
-        this.$refs.child.name = val ;
-      }
-  },
+ 
 }
 </script>
 
