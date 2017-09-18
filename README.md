@@ -15,5 +15,13 @@
 [CnodeJS API](https://cnodejs.org/api)
 
 
+---
 
-项目源自
+项目源自[shuiRong](https://github.com/shuiRong/VueCnodeJS)
+  
+  
+在此基础上进行修改
+  
+  
+此项目为VueJS初中级实例项目
+不用于商业用途
