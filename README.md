@@ -8,7 +8,7 @@
 
 [Vue-router](https://router.vuejs.org/zh-cn/)
 
-[Vue-resource](https://etianqq.gitbooks.io/vue2/content/chapter2-vue-resource.html)
+[Axios](https://github.com/mzabriskie/axios)
 
 [Element](http://element.eleme.io/#/zh-CN/component/installation)
 
