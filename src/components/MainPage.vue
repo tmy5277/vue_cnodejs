@@ -28,7 +28,7 @@ export default {
     }
   },
   methods:{
-    getdata(){
+    getData(){
         this.limit+=10;
         this.$http({
             url: 'https://cnodejs.org/api/v1/topics',
@@ -41,8 +41,9 @@ export default {
         }).then((res) =>{
             this.items =res.data.data;
         }).catch((res)=>{
-            console.log('main.vue: ', res);
+            console.log('MainPage.vue: ', res);
         });
+        //console.log(items);
     },
     scrollLoad() {        //向下滚屏加载
             const sumH = document.body.scrollHeight;
@@ -62,7 +63,7 @@ export default {
     },
 
     watch: {
-        content(val) {
+        items(val) {
             if (val) {
                 this.loading = false;
             }
@@ -128,7 +129,8 @@ a {
     margin-right: 2rem;
 }
 .tab{
-    color: #555;
+    background-color: #777;
+    color: #ddd;
     font-size: 17px;
     margin-top: 1rem;
     margin-right: 2rem;

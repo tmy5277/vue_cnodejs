@@ -11,20 +11,20 @@ export default new Router({
     {
       path: '/',
       name: 'Root',
-      component: {
+      components: {
       	main:Main,
       }},
-      {
-      path: '/topic/:id',
-      name: 'Article',
-      component: {
-      	main:Article,
-      	side:Side
-      }},
+      // {
+      // path: '/topic/:id',
+      // name: 'Article',
+      // component: {
+      // 	main:Article,
+      // 	side:Side
+      // }},
       {
       path: '/user/:loginname',
       name: 'User',
-      component: {
+      components: {
       	main:User,
       }},
       

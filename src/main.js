@@ -10,7 +10,7 @@ import Icon from 'vue-svg-icon/Icon'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios;
-Vue.components('icon',Icon);
+Vue.component('icon',Icon);
 Vue.use(ElementUI);
 
 /* eslint-disable no-new */
