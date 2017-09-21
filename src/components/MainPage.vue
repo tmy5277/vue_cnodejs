@@ -1,7 +1,7 @@
 <template>
   <div class="loading" v-loading='loading'>
     <div class="for" v-for='item in items'>
-        <router-link :to='{name: "User", params:{name: item.author.loginname}}'>
+        <router-link :to='{name: "User", params:{loginname: item.author.loginname}}'>
             <img :src='item.author.avatar_url' :title='item.author.loginname'>
         </router-link>
         <div class="content">
@@ -11,7 +11,7 @@
             </router-link>
             <div class="stuff">
                 <span>回复：{{item.reply_count}}</span>
-                <span>创建时间：{{item.create_at}}</span>
+                <span>创建时间：{{dealTime(item.create_at)}}</span>
             </div>
         </div>
     </div>
@@ -53,6 +53,9 @@ export default {
                 this.getData();
             }
         },
+    dealTime(time) {
+            return String(time).match(/.{16}/)[0].replace(/.{2}/, '').replace(/[T]/, ' ');
+        },
     },
     
     mounted() {     //个人理解为页面渲染后调用的钩子函数
@@ -61,7 +64,6 @@ export default {
     created(){
         this.getData();
     },
-
     watch: {
         items(val) {
             if (val) {

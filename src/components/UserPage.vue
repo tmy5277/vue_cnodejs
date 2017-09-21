@@ -2,7 +2,7 @@
     <div class="userDiv">
         <div class="profile" v-loading='loading'>
             <div>
-                <img src="userInfo.avatar_url" :title='userInfo.loginname'>
+                <img :src="userInfo.avatar_url" :title='userInfo.loginname'>
                 <span>{{userInfo.loginname}}</span>
             </div>
             <p>
@@ -22,8 +22,8 @@
         <div class="replies" v-loading='loading'>
             <p>最近参与的话题</p>
             <template v-for='(item,index) of userInfo.recent_replies'>
-                <div v-if="index<5 && item">
-                    <img src="item.author.avatar_url" :title='item.author.loginname'>
+                <div v-if="index<4 && item">
+                    <img :src="item.author.avatar_url" :title='item.author.loginname'>
                     <router-link :to='{name:"Article", params:{id:item.id}}'>
                         <p class="userTitle">{{item.title}}</p>
                     </router-link>
@@ -34,8 +34,8 @@
         <div class="topics" v-loading='loading'>
             <p>最近创建的话题</p>
             <template v-for='(item,index) of userInfo.recent_topics'>
-                <div v-if="index<5 && item">
-                    <img src="item.author.avatar_url" :title='item.author.loginname'>
+                <div v-if="index<4 && item">
+                    <img :src="item.author.avatar_url" :title='item.author.loginname'>
                     <router-link :to='{name:"Article", params:{id:item.id}}'>
                         <p class="userTitle">{{item.title}}</p>
                     </router-link>
@@ -51,7 +51,7 @@
         data(){
             return{
                 userInfo:{
-                    create_at:'2017-09-18',//预设默认值：因为Vue会在一系列的初试化过程中调用此数据多次，而此时还有axios还没有执行到。如果没有默认值的话，会因为dealCommentTime中的方法保错：  0 of undefined....
+                    create_at:'2017-09-18',
                 },
                 loading :true,
             };
@@ -60,19 +60,17 @@
             createTime(time){
                 return String(time).match(/.{10}/)[0].replace(/.{2}/,'').replace(/.[T]/,' ');
             },
-            getData(){
+        },
+        created(){
                 this.$http({
-                    url: `https://cnodejs.org/api/v1${this.$router.path}`,
+                    url: `https://cnodejs.org/api/v1${this.$route.path}`,
                     method: 'get',
                 }).then((res) =>{
                 this.userInfo =res.data.data;
                 }).catch((res)=>{
-                    console.log('UserPage.vue: ', res);
+                    console.log('UserPage1.vue: ', res);
                 });
-            },
-        },
-        created(){
-            this.getData();
+                console.log(this.userInfo);
         },
         beforeRouterUpdate(to,from,next){
              this.$http({
@@ -100,6 +98,14 @@
     padding: 0;
     box-sizing: border-box;
     border: none;
+    width: 75%;
+}
+.userDiv a
+{
+    font-size: 25px;
+    color: black;
+    margin-left: 1rem;
+    text-decoration: none;
 }
 .profile{
     padding: 1rem;
@@ -133,6 +139,7 @@
     background: #E5E9F2;
     padding: 1rem;
     border-radius: 0.3rem;
+    margin: 1rem 0;
 }
 .topics{
     background: #d3dce6;
@@ -153,18 +160,17 @@
     border-bottom: 2px solid #C0CCDA;
     padding-bottom: 1rem;
 }
-.recentTopics div {
+.topics div {
     border-bottom: 2px solid #99A9BF;
 }
 .userTitle {
     font-size: 25px;
 }
-.replies img
+.replies img,
 .topics img
 {
    width: 5rem;
    height: 5rem;
    margin-right: 1rem;
 }
-
 </style>
