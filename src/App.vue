@@ -19,6 +19,13 @@ export default {
   components:{
     cnodeHead
   },
+  watch:{
+    authorName(val){
+      if (val) {
+        this.$refs.loginname.userName = val;
+      }
+    }
+  },
  
 }
 </script>

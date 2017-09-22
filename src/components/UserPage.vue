@@ -23,7 +23,10 @@
             <p>最近参与的话题</p>
             <template v-for='(item,index) of userInfo.recent_replies'>
                 <div v-if="index<4 && item">
-                    <img :src="item.author.avatar_url" :title='item.author.loginname'>
+                    <router-link :to='{name:"User", params:{loginname: item.author.loginname}}'>
+                         <img :src="item.author.avatar_url" :title='item.author.loginname'>
+                    </router-link>
+                   
                     <router-link :to='{name:"Article", params:{id:item.id}}'>
                         <p class="userTitle">{{item.title}}</p>
                     </router-link>
@@ -67,8 +70,8 @@
                     method: 'get',
                 }).then((res) =>{
                 this.userInfo =res.data.data;
-                }).catch((res)=>{
-                    console.log('UserPage1.vue: ', res);
+                }).catch((err)=>{
+                    console.log('UserPage1.vue: ', err);
                 });
                 console.log(this.userInfo);
         },
@@ -78,8 +81,8 @@
                     method: 'get',
                 }).then((res) =>{
                 this.userInfo =res.data.data;
-                }).catch((res)=>{
-                    console.log('UserPag.vue: ', res);
+                }).catch((err)=>{
+                    console.log('UserPag.vue: ', err);
                 });
                 next();
         },

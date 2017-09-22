@@ -21,7 +21,7 @@ export default new Router({
       name: 'Article',
       components: {
       	main:Article,
-      	// side:Side,
+      	side:Side,
       }},
       {
       path: '/user/:loginname',
@@ -29,6 +29,5 @@ export default new Router({
       components: {
       	main:User,
       }},
-      
   ]
 })

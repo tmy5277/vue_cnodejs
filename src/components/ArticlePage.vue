@@ -1,7 +1,7 @@
 <template>
     <div class="articleDiv" v-loading='loading'>
             <span class="marginSpan">发布于：{{createTime}}</span>
-            <router-link :to='{name:"User",params:{name:article.author.loginname}}'>
+            <router-link :to='{name:"User",params:{loginname:article.author.loginname}}'>
                 作者：{{article.author.loginname}}
             </router-link>
             <span class="marginSpan">
@@ -12,7 +12,7 @@
             <div id="content" v-html="article.content"></div>
             <div class="replies">
                 <div class="replyDiv" v-for='reply in article.replies' :key='reply.length'>
-                    <router-link :to='{name:"User",params:{name:reply.author.loginname}}'>
+                    <router-link :to='{name:"User",params:{loginname:reply.author.loginname}}'>
                         <img :src="reply.author.avatar_url">
                     </router-link>
                     <div class="replyContent">
@@ -66,9 +66,10 @@
                     method: 'get',
                 }).then((res) =>{
                 this.article =res.data.data;
-                this.$parent.authorName = this.article.author.loginname
-                }).catch((res)=>{
-                    console.log('AritlePage.vue: ', res);
+                this.$parent.authorName = this.article.author.loginname;
+                // console.log(this.$parent.authorName);
+                }).catch((err)=>{
+                    console.log('AritlePage.vue: ', err);
                 });
         },
         watch:{
@@ -95,11 +96,12 @@
     padding: 0.5rem 0;
 }
 
-@import url('../assets/markdown-github.css')
+@import url('../assets/markdown-github.css');
 
 .marginSpan{
     margin: 0 0.5rem;
 }
+
 .articleDiv span:first-child{
     margin-left: 0;
 }
@@ -117,7 +119,7 @@
 }
 #content {
     margin: 2rem auto;
-    padding: 2rem 1rem;
+    padding: 2rem 2rem;
     border: 1px solid #ddd;
     line-height: 1.6;
     padding-bottom: 1rem;

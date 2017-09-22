@@ -40,8 +40,8 @@ export default {
             },
         }).then((res) =>{
             this.items =res.data.data;
-        }).catch((res)=>{
-            console.log('MainPage.vue: ', res);
+        }).catch((err)=>{
+            console.log('MainPage.vue: ', err);
         });
         //console.log(items);
     },
